@@ -1,4 +1,4 @@
-package com.fksoft.folha.pagamento.application.adapter.repository;
+package com.fksoft.folha.pagamento.adapter.repository;
 
 import com.fksoft.folha.pagamento.application.domain.*;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FolhaDePagamentoRepositoryXLS implements FolhaDePagamentoRepository {
+public class FolhaDePagamentoRepositoryXLS implements TodasAsFolhasDePagamentos {
 
     private static FolhaDePagamentoRepositoryXLS instancia;
     private File arquivo;

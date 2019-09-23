@@ -1,7 +1,7 @@
 package com.fksoft.folha.pagamento.application;
 
 import com.fksoft.folha.pagamento.application.domain.FolhaDePagamento;
-import com.fksoft.folha.pagamento.application.domain.FolhaDePagamentoRepository;
+import com.fksoft.folha.pagamento.application.domain.TodasAsFolhasDePagamentos;
 import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
@@ -11,10 +11,10 @@ import java.util.List;
 public class FolhaDePagamentoServiceImpl implements FolhaDePagamentoService {
 
     private final Logger logger = Logger.getLogger(getClass());
-    private final FolhaDePagamentoRepository folhaDePagamentoRepository;
+    private final TodasAsFolhasDePagamentos todasAsFolhasDePagamentos;
 
-    public FolhaDePagamentoServiceImpl(FolhaDePagamentoRepository folhaDePagamentoRepository) {
-        this.folhaDePagamentoRepository = folhaDePagamentoRepository;
+    public FolhaDePagamentoServiceImpl(TodasAsFolhasDePagamentos todasAsFolhasDePagamentos) {
+        this.todasAsFolhasDePagamentos = todasAsFolhasDePagamentos;
     }
 
     public void sincronizar()  {
@@ -22,10 +22,11 @@ public class FolhaDePagamentoServiceImpl implements FolhaDePagamentoService {
         try {
 
             logger.info("Lendo as linhas da Planilha");
-            List<FolhaDePagamento> folhas = folhaDePagamentoRepository.buscarTudo();
+            List<FolhaDePagamento> folhas = todasAsFolhasDePagamentos.buscarTudo();
+
             for (FolhaDePagamento folha : folhas) {
                 logger.info("Salvando dados atualizados na linha: " + folha.getId());
-                folhaDePagamentoRepository.salvar(folha);
+                todasAsFolhasDePagamentos.salvar(folha);
             }
 
         } catch (FileNotFoundException ex) {

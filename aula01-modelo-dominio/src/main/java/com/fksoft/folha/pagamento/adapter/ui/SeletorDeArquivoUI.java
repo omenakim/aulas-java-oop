@@ -1,7 +1,7 @@
-package com.fksoft.folha.pagamento.application.adapter.ui;
+package com.fksoft.folha.pagamento.adapter.ui;
 
 import com.fksoft.folha.pagamento.application.FolhaDePagamentoService;
-import com.fksoft.folha.pagamento.application.adapter.repository.FolhaDePagamentoRepositoryXLS;
+import com.fksoft.folha.pagamento.adapter.repository.FolhaDePagamentoRepositoryXLS;
 
 import javax.swing.*;
 import java.io.File;
@@ -20,10 +20,15 @@ public class SeletorDeArquivoUI extends JFrame {
         int retorno = fileChooser.showOpenDialog(null);
 
         if (retorno == JFileChooser.APPROVE_OPTION) {
+
             File file = fileChooser.getSelectedFile();
+
             FolhaDePagamentoRepositoryXLS.getInstancia().setArquivo(file);
+
             folhaDePagamentoService.sincronizar();
+
             JOptionPane.showMessageDialog(null, "Arquivo sincronizado com sucesso!");
+
         } else {
             JOptionPane.showMessageDialog(null, "Houve um erro ao sincronizar arquivo!");
         }
