@@ -13,7 +13,7 @@ public class Aplicacao {
         final FolhaDePagamentoRepository folhaDePagamentoRepository = FolhaDePagamentoRepositoryXLS.getInstancia();
         final FolhaDePagamentoService folhaDePagamentoService = new FolhaDePagamentoServiceImpl(folhaDePagamentoRepository);
 
-        SeletorDeArquivoUI seletorDeArquivoUI = new SeletorDeArquivoUI(folhaDePagamentoService);
+        new SeletorDeArquivoUI(folhaDePagamentoService);
 
     }
 
